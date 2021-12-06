@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function App() {
 
@@ -27,7 +27,8 @@ export default function App() {
     }
 
     return (
-        <View style={estilo.container}> {/* COMPONEnTE PRINCIPAL DO APP */}
+        <ScrollView>
+        <View style={estilo.container}> 
             <Image source={require('./src/images/cadeado.png')} // CARREGA IMAGEM
                 style={{ width: 200, height: 200 }}></Image>
 
@@ -43,19 +44,20 @@ export default function App() {
                     onChangeText={n => setSize(n)}
                 ></TextInput>
 
-                <TouchableOpacity style={estilo.botao} onPress={gerarPsw}> {/* BOTÃO PARA GERAR SENHA*/}
+                <TouchableOpacity style={estilo.botao} onPress={gerarPsw}> 
                     <Text style={estilo.textBotao}>Gerar Senha</Text>
                 </TouchableOpacity>
 
 
                 {res &&
-                    <View style={estilo.result}> {/* COMPONENTE ONDE A SENHA GERADA É EXIBIDA */}
+                    <View style={estilo.result}>
                         <Text style={{fontWeight: 'bold', fontSize: 16}} >{psw}</Text>
                     </View>
                 }
             </View>
-            <Text style={{ fontSize: 13, fontWeight: 'bold', marginBottom: 30 }}>Iglisson Ruan e Leonardo Moura</Text>
+            <Text style={estilo.nomeAlunos}>Iglisson Ruan e Leonardo Moura</Text>
         </View>
+        </ScrollView>
     );
 }
 
@@ -106,7 +108,8 @@ const estilo = StyleSheet.create({
     textBotao: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#fff'
+        color: '#fff',
+        textAlign: 'center'
     },
 
     result: {
@@ -117,5 +120,13 @@ const estilo = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+
+    nomeAlunos: {
+        fontSize: 13,
+        fontWeight: 'bold',
+        marginBottom: 30,
+        padding: 15,
+        marginTop: 5
     }
 });
